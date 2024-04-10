@@ -3,14 +3,158 @@
   <head>
     <meta charset="UTF-8">
     <title>Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         .people_counter {
           text-align:center;
+        }
+
+        .centered {
+          position: relative;
+          top: 11px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          background-color: transparent;
+          height: 500px;
+          width: 1000px;
+          border: 2px solid #111111;
+          margin-bottom: 100px;
+        }
+
+        .intro-stack {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          position: relative;
+          height: 500px;
+          width: 1000px;
+        }
+
+        .intro-stack h1 {
+          font-size: 40px;
+          margin: 20px 0;
+        }
+
+        .intro-stack p {
+          margin-top: 30px;
+          color: #555555;
+          font-size: 25px;
+        }
+        
+        .intro-stack img {
+          position: absolute;
+          height: 50px;
+          left: 60px;
+          bottom: 10px;
+          transform: translate(-50%, -50%);
+        }
+
+        .choice {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .choice div {
+          height: 200px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .choice div h3 {
+          font-weight: 400;
+          font-size: 35px;
+        }
+
+        .choice .c1 {
+          border-right: 1px solid #444444;
+        }
+
+        .choice .c2 {
+          border-left: 1px solid #444444;
+        }
+
+        .header {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 95%;
+          align-items: center;
+          position: relative;
+          left: 50%;
+          transform: translate(-50%, 60%);
         }
     </style>
   </head>
   <body>
-    <div style="width:100%; text-align:center;">
+    <div style="width:100%; text-align:center; margin-top: 10px;">
+      <div class="centered">
+        <div class="intro-stack">
+          <h1>This application is meant to help you learn more about yourself</h1>
+          <h1>and allow you to find compatible new friends</h1>
+
+          <p>Remember, you can always duck to skip questions</p>
+
+          <img src="https://www.svgrepo.com/show/35381/white-home.svg" alt="Home">
+        </div>
+      </div>
+
+      <div class="centered">
+        <div class="header">
+          <div class="time">4:16</div>
+          <div class="question">Question 1 of 2</div>
+        </div>
+        <div class="intro-stack">
+          <h1>It's your day off, what sounds more fun to you?</h1>
+          <div class="choice">
+            <div class="c1">
+              <h3>Hit the town! Explore, do a fun activity, or meet new people</h3>
+            </div>
+            <div class="c2">
+              <h3>Stay home and get cozy, or hang out with some close friends</h3>
+            </div>
+          </div>
+
+          <p>Answer by standing on the left or right side of the screen <br> Raise your arms to go back</p>
+
+          <img src="https://www.svgrepo.com/show/35381/white-home.svg" alt="Home">
+        </div>
+      </div>
+
+      <div class="centered">
+        <div class="header">
+          <div class="time">4:16</div>
+          <div class="question">Question 2 of 2</div>
+        </div>
+        <div class="intro-stack">
+          <h1>Your friend has asked you to help plan their birthday.</h1>
+          <div class="choice">
+            <div class="c1">
+              <h3>You have a whole calendar set, reservations made, and it's all a surprise.</h3>
+            </div>
+            <div class="c2">
+              <h3>You have some rough ideas. Wherever the day takes you!</h3>
+            </div>
+          </div>
+
+          <p>Answer by standing on the left or right side of the screen <br> Raise your arms to go back</p>
+
+          <img src="https://www.svgrepo.com/show/35381/white-home.svg" alt="Home">
+        </div>
+      </div>
       <canvas id="draw" height="500" width="1000" style="border: 1px solid #111111; margin: auto"/>
     </div>
     <div class="people_counter"></div>

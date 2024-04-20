@@ -1,197 +1,101 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <style>
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .people_counter {
-          text-align:center;
-        }
-
-        .centered {
-          position: relative;
-          top: 11px;
-          left: 50%;
-          transform: translate(-50%, 0);
-          background-color: transparent;
-          height: 500px;
-          width: 1000px;
-          border: 2px solid #111111;
-          margin-bottom: 100px;
-        }
-
-        .intro-stack {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-          position: relative;
-          height: 500px;
-          width: 1000px;
-        }
-
-        .intro-stack h1 {
-          font-size: 40px;
-          margin: 20px 0;
-        }
-
-        .intro-stack p {
-          margin-top: 30px;
-          color: #555555;
-          font-size: 25px;
-        }
-        
-        .intro-stack img {
-          position: absolute;
-          height: 50px;
-          left: 60px;
-          bottom: 10px;
-          transform: translate(-50%, -50%);
-        }
-
-        .choice {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .choice div {
-          height: 200px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .choice div h3 {
-          font-weight: 400;
-          font-size: 35px;
-        }
-
-        .choice .c1 {
-          border-right: 1px solid #444444;
-        }
-
-        .choice .c2 {
-          border-left: 1px solid #444444;
-        }
-
-        .header {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          width: 95%;
-          align-items: center;
-          position: relative;
-          left: 50%;
-          transform: translate(-50%, 60%);
-        }
-    </style>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" type="module"></script>
   </head>
   <body>
+    <!-- header  -->
+    <div style="width: 100%">
+      <div class="slide">
+        <div class="centered">
+          <div class="intro-stack">
+            <h1>
+              This application is meant to help you learn more about yourself
+              and allow you to find compatible new friends
+            </h1>
 
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="main.js" type="module"></script>
+            <p>Remember, you can always duck to skip questions</p>
 
-    <div style="width:100%; text-align:center; margin-top: 10px;">
-      <div class="centered">
-        <div class="intro-stack">
-          <h1>This application is meant to help you learn more about yourself</h1>
-          <h1>and allow you to find compatible new friends</h1>
+            <img
+              src="https://www.svgrepo.com/show/35381/white-home.svg"
+              alt="Home"
+            />
 
-          <p>Remember, you can always duck to skip questions</p>
-
-          <img src="https://www.svgrepo.com/show/35381/white-home.svg" alt="Home">
-        </div>
-      </div>
-
-      <div class="centered">
-        <div class="header">
-          <div class="time">4:16</div>
-          <div class="question">Question 1 of 2</div>
-        </div>
-        <div class="intro-stack">
-          <h1>It's your day off, what sounds more fun to you?</h1>
-          <div class="choice">
-            <div class="c1">
-              <h3>Hit the town! Explore, do a fun activity, or meet new people</h3>
-            </div>
-            <div class="c2">
-              <h3>Stay home and get cozy, or hang out with some close friends</h3>
-            </div>
+            <button id="goToQuestions">go to questions</button>
           </div>
-
-          <p>Answer by standing on the left or right side of the screen <br> Raise your arms to go back</p>
-
-          <img src="https://www.svgrepo.com/show/35381/white-home.svg" alt="Home">
         </div>
       </div>
 
-      <div class="centered">
-        <div class="header">
-          <div class="time">4:16</div>
-          <div class="question">Question 2 of 2</div>
-        </div>
-        <div class="intro-stack">
-          <h1>Your friend has asked you to help plan their birthday.</h1>
-          <div class="choice">
-            <div class="c1">
-              <h3>You have a whole calendar set, reservations made, and it's all a surprise.</h3>
-            </div>
-            <div class="c2">
-              <h3>You have some rough ideas. Wherever the day takes you!</h3>
-            </div>
+      <div class="slide">
+        <div class="centered">
+          <div class="header">
+            <!-- <div class="time">4:16</div> -->
+            <div class="question" id="question_no"></div>
           </div>
+          <div class="intro-stack">
+            <h1 id="questionText"></h1>
+            <div class="choice">
+              <div class="c1">
+                <h3 id="c1Text"></h3>
+                <button id="leftButton">left</button>
+              </div>
+              <div class="c2">
+                <h3 id="c2Text"></h3>
+                <button id="rightButton">right</button>
+              </div>
+            </div>
 
-          <p>Answer by standing on the left or right side of the screen <br> Raise your arms to go back</p>
+            <p>
+              Answer by raising your left or right hand <br />
+              Raise your arms to go back
+            </p>
 
-          <img src="https://www.svgrepo.com/show/35381/white-home.svg" alt="Home">
-        </div>
-      </div>
-
-      <div class="centered">
-        <div class="header">
-          <div class="time">4:20</div>
-          <div class="question">Results</div>
-        </div>
-        <div class="intro-stack">
-          <h1>Matches</h1>
-          <div class="choice">
-            [Insert results here]
+            <img
+              src="https://www.svgrepo.com/show/35381/white-home.svg"
+              alt="Home"
+            />
           </div>
-
-          <p>End the quiz by standing on the left or right side of the screen <br> Raise your arms to go back</p>
-
-          <img src="https://www.svgrepo.com/show/35381/white-home.svg" alt="Home">
         </div>
       </div>
-      <canvas id="draw" height="500" width="1000" style="border: 1px solid #111111; margin: auto"/>
+
+      <div class="slide">
+        <div class="centered">
+          <div class="intro-stack">
+            <h1>Matches</h1>
+            <div class="choice" id="personalityResult"></div>
+
+            <p>End the quiz by raising both your arms.</p>
+
+            <img
+              src="https://www.svgrepo.com/show/35381/white-home.svg"
+              alt="Home"
+            />
+          </div>
+        </div>
+      </div>
     </div>
     <div class="people_counter"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-          frames.start();
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      type="text/javascript"
+    ></script>
+    <!-- <script type="text/javascript">
+      $(document).ready(function () {
+        frames.start();
       });
 
       var frames = {
         socket: null,
 
-        start: function() {
+        start: function () {
           var ip = window.location.search;
-          ip = ip.split('ip=')[1];
+          ip = ip.split("ip=")[1];
           console.log(`connecting to ${ip}`);
           // websocket connection location
           var url = "ws://" + ip + "/frames";
@@ -202,11 +106,11 @@
           // all real-world units are in mm unless denoted by CM
           var personRadiusCM = 30;
           // origin (x,y)
-          var origin = [c.width/2, 0];
+          var origin = [c.width / 2, 0];
 
           // subscribe to the /frames data
           frames.socket = new WebSocket(url);
-          frames.socket.onmessage = function(event) {
+          frames.socket.onmessage = function (event) {
             let data = JSON.parse(event.data);
             // clear the canvas
             ctx.clearRect(0, 0, c.width, c.height);
@@ -218,7 +122,7 @@
             var i = 0;
             if (data.people) {
               var num_people = Object.keys(data.people).length;
-              $('.people_counter').text(`I see ${num_people} people`);
+              $(".people_counter").text(`I see ${num_people} people`);
               //console.log(num_people);
               for (const [idx, person] of Object.entries(data.people)) {
                 // we want the data on the x,z plane from the camera's frame, so use indicies and 0 (x), 2 (Z)
@@ -226,8 +130,8 @@
                 // function definition is: arc(x, y, radius, startAngle, endAngle, counterclockwise)
                 ctx.strokeStyle = ctx.fillStyle = colors[i++];
                 ctx.beginPath();
-                let person_x = -1 * toCM(person.avg_position[0]) + origin[0]
-                let person_y = toCM(person.avg_position[2]) + origin[1]
+                let person_x = -1 * toCM(person.avg_position[0]) + origin[0];
+                let person_y = toCM(person.avg_position[2]) + origin[1];
                 ctx.arc(person_x, person_y, personRadiusCM, 0, 2 * Math.PI);
                 ctx.stroke();
                 // draw an arrow for the person, if we have detected an angle
@@ -243,16 +147,15 @@
                 }
               }
             }
-          }
-        }
+          };
+        },
       };
-
 
       // Helper Functions
 
       // Convert MM to CM
       function toCM(mm) {
-        return mm/10;
+        return mm / 10;
       }
 
       // Draw an arrow
@@ -264,30 +167,41 @@
         var angle = Math.atan2(dy, dx);
         context.moveTo(fromx, fromy);
         context.lineTo(tox, toy);
-        context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+        context.lineTo(
+          tox - headlen * Math.cos(angle - Math.PI / 6),
+          toy - headlen * Math.sin(angle - Math.PI / 6)
+        );
         context.moveTo(tox, toy);
-        context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+        context.lineTo(
+          tox - headlen * Math.cos(angle + Math.PI / 6),
+          toy - headlen * Math.sin(angle + Math.PI / 6)
+        );
       }
 
       // Setup an array of colors
       var tc = tinycolor({
-        r: Math.floor(Math.random() * 0xFF),
-        g: Math.floor(Math.random() * 0xFF),
-        b: Math.floor(Math.random() * 0xFF)
+        r: Math.floor(Math.random() * 0xff),
+        g: Math.floor(Math.random() * 0xff),
+        b: Math.floor(Math.random() * 0xff),
       });
       colors = [];
       var parts = 2 + Math.floor(Math.random() * 5);
       for (var i = 0; i < parts; i++) {
         tc = tc.spin(360 / parts);
-        colors.push('#' + tc.toHex());
+        colors.push("#" + tc.toHex());
       }
 
       // Draw the environment
       function drawEnv(ctx, origin) {
         var cameraSizeCM = [15, 5];
 
-        ctx.strokeStyle = ctx.fillStyle = '#333333';
-        ctx.fillRect(origin[0], origin[1]-cameraSizeCM[1]/2, cameraSizeCM[0], cameraSizeCM[1])
+        ctx.strokeStyle = ctx.fillStyle = "#333333";
+        ctx.fillRect(
+          origin[0],
+          origin[1] - cameraSizeCM[1] / 2,
+          cameraSizeCM[0],
+          cameraSizeCM[1]
+        );
 
         ctx.font = "25px Arial";
         ctx.fillText("x", 90, 20);
@@ -298,16 +212,28 @@
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.strokeStyle = ctx.fillStyle = '#0000FF';
-        canvas_arrow(ctx, origin[0]+cameraSizeCM[0]/2, 1.5, origin[0]+cameraSizeCM[0]/2, 20);
+        ctx.strokeStyle = ctx.fillStyle = "#0000FF";
+        canvas_arrow(
+          ctx,
+          origin[0] + cameraSizeCM[0] / 2,
+          1.5,
+          origin[0] + cameraSizeCM[0] / 2,
+          20
+        );
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.strokeStyle = ctx.fillStyle = '#FF0000';
-        canvas_arrow(ctx, origin[0]+cameraSizeCM[0]/2, 1.5, origin[0]+cameraSizeCM[0]/2-20, 1.5);
+        ctx.strokeStyle = ctx.fillStyle = "#FF0000";
+        canvas_arrow(
+          ctx,
+          origin[0] + cameraSizeCM[0] / 2,
+          1.5,
+          origin[0] + cameraSizeCM[0] / 2 - 20,
+          1.5
+        );
         ctx.stroke();
       }
-
-    </script>
+    </script> -->
+    <script type="module" src="main.js"></script>
   </body>
 </html>

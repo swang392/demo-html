@@ -94,7 +94,7 @@ const QUESTIONS = [
 function calculateMBTI(choices) {
   let dimensions = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
   choices.forEach((choice) => {
-    dimensions[choice.type]++;
+    dimensions[choice]++;
   });
 
   const personalityType = [
@@ -117,7 +117,6 @@ const nextQuestion = function () {
     console.log(choices);
 
     const resultType = calculateMBTI(choices);
-    console.log("Your MBTI type might be:", resultType);
     document.getElementById(
       "personalityResult"
     ).innerHTML = `Your MBTI type might be: ${resultType}`;
@@ -144,11 +143,10 @@ $(document).ready(function () {
   frames.start();
 
   const goToQuestionsButton = document.getElementById("goToQuestions");
-  console.log("nice");
+
   goToQuestionsButton.onclick = function () {
     questionIndex = -1;
     appState = "questions";
-    // console.log("hi");
     nextQuestion();
     window.scrollTo({
       top: window.innerHeight,
@@ -157,13 +155,11 @@ $(document).ready(function () {
   };
 
   const leftButton = document.getElementById("leftButton");
-  console.log("clicked left");
   leftButton.onclick = function () {
     choices.push(QUESTIONS[questionIndex].option1.type);
     nextQuestion();
   };
   const rightButton = document.getElementById("rightButton");
-  console.log("clicked right");
   rightButton.onclick = function () {
     choices.push(QUESTIONS[questionIndex].option2.type);
     nextQuestion();

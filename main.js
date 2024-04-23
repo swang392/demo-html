@@ -107,14 +107,6 @@ function calculateMBTI(choices) {
   return personalityType;
 }
 
-// Example usage:
-// const userChoices = ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"]; // User selects an option for each question
-// const userSelections = userChoices.map(
-//   (choice, index) => questions[index][choice]
-// );
-// const resultType = calculateMBTI(userSelections);
-// console.log("Your MBTI type might be:", resultType);
-
 var appState = "welcome";
 var questionIndex = -1;
 var choices = [];

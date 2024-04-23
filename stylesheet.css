@@ -5,6 +5,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Open Sans;
+}
+
+body {
   background-color: #f5f5f5;
 }
 
@@ -26,6 +29,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .intro-stack {
@@ -98,4 +102,75 @@
 
 .header {
   padding: 1vh 0;
+}
+
+.personalityBadges {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vh;
+  height: 40%;
+  /* height: 2vh; */
+}
+
+.badge svg {
+  width: 12vh;
+  margin-left: 5vh;
+  margin-right: 5vh;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge p {
+  margin-top: 0.5vh !important;
+  font-size: 2vh !important;
+}
+
+#personalityResult {
+  color: #555555;
+  font-size: 3vh;
+  text-align: center;
+}
+#personalityWave {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+}
+
+.match-intro-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2vh 5vh 8vh 5vh;
+  position: relative;
+}
+
+.match-intro-stack h1 {
+  font-size: 5vh;
+  margin: 1vh 0;
+  text-align: center;
+}
+
+.match-intro-stack h3 {
+  font-size: 4vh;
+  margin: 3vh 0;
+  text-align: center;
+  font-weight: normal;
+  color: dimgray;
+}
+
+.match-intro-stack p {
+  margin-top: 3vh;
+  color: #555555;
+  font-size: 3vh;
+  text-align: center;
 }

@@ -241,6 +241,7 @@ function calculateMBTI(choices) {
 var appState = "welcome";
 var questionIndex = -1;
 var choices = [];
+var cooldown = false;
 
 const nextQuestion = function () {
   if (questionIndex >= QUESTIONS.length - 1) {
@@ -293,30 +294,14 @@ const nextQuestion = function () {
 
 $(document).ready(function () {
   frames.start();
-
-  const goToQuestionsButton = document.getElementById("goToQuestions");
-
-  goToQuestionsButton.onclick = function () {
-    questionIndex = -1;
-    appState = "questions";
-    nextQuestion();
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  };
-
-  const leftButton = document.getElementById("leftButton");
-  leftButton.onclick = function () {
-    choices.push(QUESTIONS[questionIndex].option1.type);
-    nextQuestion();
-  };
-  const rightButton = document.getElementById("rightButton");
-  rightButton.onclick = function () {
-    choices.push(QUESTIONS[questionIndex].option2.type);
-    nextQuestion();
-  };
 });
+
+const setCooldown = function () {
+  cooldown = true;
+  setTimeout(() => {
+    cooldown = false;
+  }, 1500);
+};
 
 var frames = {
   socket: null,
@@ -333,18 +318,50 @@ var frames = {
   show: function (frame) {
     let peopleInFrame = countPeople(frame);
     if (peopleInFrame == 0) {
-      // console.log("hello")
       return;
     } else if (peopleInFrame > 1) {
       console.log("One person at a time please.");
     } else {
+      if (cooldown) {
+        return;
+      }
       const person = frame["people"][0];
       if (areBothHandsRaised(person)) {
         console.log("Both hands raised");
+        if (appState == "questions") {
+          // UNDO
+          choices.pop();
+          questionIndex -= 2;
+          nextQuestion();
+        } else if (appState == "end") {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+          appState = "welcome";
+          questionIndex = -1;
+        }
       } else if (isLeftHandRaised(person)) {
         console.log("Left hand raised");
+        if (appState == "questions") {
+          choices.push(QUESTIONS[questionIndex].option1.type);
+          nextQuestion();
+        }
       } else if (isRightHandRaised(person)) {
         console.log("Right hand raised");
+        console.log(appState);
+        if (appState == "questions") {
+          choices.push(QUESTIONS[questionIndex].option2.type);
+          nextQuestion();
+        } else if (appState == "welcome") {
+          questionIndex = -1;
+          appState = "questions";
+          nextQuestion();
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth",
+          });
+        }
       }
       const side = personOnSide(person);
 
@@ -353,6 +370,7 @@ var frames = {
       } else if (side == 1) {
         console.log("Person on right side of screen");
       }
+      setCooldown();
     }
   },
 };

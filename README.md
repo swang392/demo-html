@@ -30,8 +30,8 @@ This application must be deployed on an application that uses Kinect. Navigation
 **Student Name and NetId:** Aarush Sharma, as4298
 **Contribution:** I worked on the base UI used for the different screens and the initial layout. This includes the base HTML formats as well as some of the CSS styling. I also worked on adding smoother transitions for the CSS such as fade effects. 
 
-**Student Name and NetId:**
-**Contribution:**
+**Student Name and NetId:** Oliver Li, fl468
+**Contribution:** I worked on the visual recognition backbone. This meant grabbing data from the kinect camera and translating poses (arm positions and which side of screen) into input the rest of the system could use. I unit tested the recognition system on its own server with the TV in order to make sure that poses were captured properly and converted into the corresponding input. 
 
 **Student Name and NetId:**
 **Contribution:**

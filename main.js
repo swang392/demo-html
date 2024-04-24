@@ -91,10 +91,141 @@ const QUESTIONS = [
   },
 ];
 
+const personalityTypes = [
+  {
+    MBTI: "INTJ",
+    name: "Obsidian",
+    description:
+      "Like the strategic and resilient volcanic glass, Obsidian personalities are imaginative and have a plan for everything.",
+    compatibleWith: ["Plasma", "Zephyr", "Ether", "Aurora"],
+    hexColor: "#4A4E69",
+  },
+  {
+    MBTI: "INTP",
+    name: "Ether",
+    description:
+      "Ether personalities are like the unbounded expanse of the sky, innovative and with an unquenchable thirst for knowledge.",
+    compatibleWith: ["Meteorite", "Ironwood", "Aurora", "Obsidian"],
+    hexColor: "#3C6E71",
+  },
+  {
+    MBTI: "ENTJ",
+    name: "Meteorite",
+    description:
+      "Meteorite personalities are bold and strong-willed leaders, always finding a way or making one, much like a meteorite dominating the sky.",
+    compatibleWith: ["Ether", "Alloy", "Plasma", "Zephyr"],
+    hexColor: "#D7263D",
+  },
+  {
+    MBTI: "ENTP",
+    name: "Plasma",
+    description:
+      "Plasma personalities are dynamic and innovative, reflecting the free-flowing and electrically charged state of plasma.",
+    compatibleWith: ["Obsidian", "Aurora", "Sunstone", "Meteorite"],
+    hexColor: "#F46036",
+  },
+  {
+    MBTI: "INFJ",
+    name: "Aurora",
+    description:
+      "Aurora personalities are quiet and mystical yet inspiring, much like the mesmerizing aurora lights in the sky.",
+    compatibleWith: ["Zephyr", "Ether", "Prism", "Obsidian"],
+    hexColor: "#9C89B8",
+  },
+  {
+    MBTI: "INFP",
+    name: "Prism",
+    description:
+      "Prism personalities are poetic and kind, reflecting a spectrum of ideas and emotions, always eager to help a good cause.",
+    compatibleWith: ["Sunstone", "Aurora", "Zephyr", "Obsidian"],
+    hexColor: "#F4ACB7",
+  },
+  {
+    MBTI: "ENFJ",
+    name: "Sunstone",
+    description:
+      "Sunstone personalities are charismatic leaders, able to mesmerize their listeners like the radiant light of a sunstone.",
+    compatibleWith: ["Prism", "Aurora", "Zephyr", "Willow"],
+    hexColor: "#FFD972",
+  },
+  {
+    MBTI: "ENFP",
+    name: "Zephyr",
+    description:
+      "Zephyr personalities are enthusiastic and sociable free spirits, who can always find a reason to smile, like a refreshing breeze.",
+    compatibleWith: ["Aurora", "Obsidian", "Sunstone", "Prism"],
+    hexColor: "#9ED2C6",
+  },
+  {
+    MBTI: "ISTJ",
+    name: "Granite",
+    description:
+      "Granite personalities are practical and reliable, much like the strong and enduring granite stone.",
+    compatibleWith: ["Ironwood", "Oasis", "Hearthstone", "Alloy"],
+    hexColor: "#5C5D67",
+  },
+  {
+    MBTI: "ISFJ",
+    name: "Oasis",
+    description:
+      "Oasis personalities are warm protectors, always ready to provide comfort and care like a nourishing oasis.",
+    compatibleWith: ["Hearthstone", "Ironwood", "Granite", "Willow"],
+    hexColor: "#88AB75",
+  },
+  {
+    MBTI: "ESTJ",
+    name: "Ironwood",
+    description:
+      "Ironwood personalities are excellent administrators, strong and dependable like the ironwood tree.",
+    compatibleWith: ["Granite", "Oasis", "Hearthstone", "Meteorite"],
+    hexColor: "#C84B31",
+  },
+  {
+    MBTI: "ESFJ",
+    name: "Hearthstone",
+    description:
+      "Hearthstone personalities are extraordinarily caring and social, providing warmth and comfort like a hearthstone.",
+    compatibleWith: ["Oasis", "Granite", "Ironwood", "Willow"],
+    hexColor: "#F9C22E",
+  },
+  {
+    MBTI: "ISTP",
+    name: "Alloy",
+    description:
+      "Alloy personalities are bold and practical experimenters, masters of all kinds of tools, much like a strong, mixed metal alloy.",
+    compatibleWith: ["Quicksilver", "Meteorite", "Ironwood", "Firework"],
+    hexColor: "#7C7C7C",
+  },
+  {
+    MBTI: "ISFP",
+    name: "Willow",
+    description:
+      "Willow personalities are flexible and charming artists, ready to explore and experience new things, much like the adaptable willow tree.",
+    compatibleWith: ["Firework", "Quicksilver", "Zephyr", "Oasis"],
+    hexColor: "#D3AB9E",
+  },
+  {
+    MBTI: "ESTP",
+    name: "Quicksilver",
+    description:
+      "Quicksilver personalities are smart, energetic and perceptive, enjoying life on the edge like the fast-moving liquid metal.",
+    compatibleWith: ["Alloy", "Firework", "Meteorite", "Ironwood"],
+    hexColor: "#F18F01",
+  },
+  {
+    MBTI: "ESFP",
+    name: "Firework",
+    description:
+      "Firework personalities are spontaneous, energetic and enthusiastic, ensuring life is never boring around them, much like a dazzling firework display.",
+    compatibleWith: ["Willow", "Quicksilver", "Hearthstone", "Zephyr"],
+    hexColor: "#E84855",
+  },
+];
+
 function calculateMBTI(choices) {
   let dimensions = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
   choices.forEach((choice) => {
-    dimensions[choice.type]++;
+    dimensions[choice]++;
   });
 
   const personalityType = [
@@ -107,14 +238,6 @@ function calculateMBTI(choices) {
   return personalityType;
 }
 
-// Example usage:
-// const userChoices = ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"]; // User selects an option for each question
-// const userSelections = userChoices.map(
-//   (choice, index) => questions[index][choice]
-// );
-// const resultType = calculateMBTI(userSelections);
-// console.log("Your MBTI type might be:", resultType);
-
 var appState = "welcome";
 var questionIndex = -1;
 var choices = [];
@@ -123,12 +246,32 @@ const nextQuestion = function () {
   if (questionIndex >= QUESTIONS.length - 1) {
     appState = "end";
     console.log(choices);
-
     const resultType = calculateMBTI(choices);
-    console.log("Your MBTI type might be:", resultType);
+    const result = personalityTypes.find((type) => type.MBTI === resultType);
+    document.getElementById(
+      "personalityMatch"
+    ).innerHTML = `You are: ${result.name}`;
+    document.getElementById("personalityWave").style.fill = result.hexColor;
     document.getElementById(
       "personalityResult"
-    ).innerHTML = `Your MBTI type might be: ${resultType}`;
+    ).innerHTML = `${result.description}`;
+    document.getElementById("badge1Name").innerHTML = result.compatibleWith[0];
+    document.getElementById("badge2Name").innerHTML = result.compatibleWith[1];
+    document.getElementById("badge3Name").innerHTML = result.compatibleWith[2];
+    document.getElementById("badge4Name").innerHTML = result.compatibleWith[3];
+    document.getElementById("badge1").style.color = personalityTypes.find(
+      (type) => type.name == result.compatibleWith[0]
+    ).hexColor;
+    document.getElementById("badge2").style.color = personalityTypes.find(
+      (type) => type.name == result.compatibleWith[1]
+    ).hexColor;
+    document.getElementById("badge3").style.color = personalityTypes.find(
+      (type) => type.name == result.compatibleWith[2]
+    ).hexColor;
+    document.getElementById("badge4").style.color = personalityTypes.find(
+      (type) => type.name == result.compatibleWith[3]
+    ).hexColor;
+
     window.scrollTo({
       top: window.innerHeight * 2,
       behavior: "smooth",
@@ -152,11 +295,10 @@ $(document).ready(function () {
   frames.start();
 
   const goToQuestionsButton = document.getElementById("goToQuestions");
-  console.log("nice");
+
   goToQuestionsButton.onclick = function () {
     questionIndex = -1;
     appState = "questions";
-    // console.log("hi");
     nextQuestion();
     window.scrollTo({
       top: window.innerHeight,
@@ -165,13 +307,11 @@ $(document).ready(function () {
   };
 
   const leftButton = document.getElementById("leftButton");
-  console.log("clicked left");
   leftButton.onclick = function () {
     choices.push(QUESTIONS[questionIndex].option1.type);
     nextQuestion();
   };
   const rightButton = document.getElementById("rightButton");
-  console.log("clicked right");
   rightButton.onclick = function () {
     choices.push(QUESTIONS[questionIndex].option2.type);
     nextQuestion();
@@ -206,7 +346,6 @@ var frames = {
       } else if (isRightHandRaised(person)) {
         console.log("Right hand raised");
       }
-      // console.log(frame["people"][0]["x_pos"])
       const side = personOnSide(person);
 
       if (side == -1) {

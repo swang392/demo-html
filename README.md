@@ -19,7 +19,7 @@ Thus, our project is a personality test that allows a user to answer questions a
 
 ## Constraints
 
-This application must be deployed on an application that uses Kinect. Navigation through this application relies on Kinect skeletal recognition.
+This application must be deployed on an application that uses Kinect. Navigation through this application relies on Kinect skeletal recognition. Ideal distance away from Kinect sensor is around one to two meters; being too close can sometimes mess up the sensor. 
 
 ## Collaboration Record
 

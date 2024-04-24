@@ -24,6 +24,7 @@ constraints from the deployment environment
 ## Collaboration Record
 
 **Student Name and NetId:** Sarah Wang, slw75
+
 **Contribution:** I made the draft of personality test questions and created the function to come up with the final personality type. I also created the different types of personalities based on MBTI, and created the names, colors, descriptions, and compatible types. I worked on UI for the test, including building out the framework and screens for the test questions, as well as creating and designing the final personality quiz screen that features a description of the test and the compatible types. I worked on styling for all of the UI screens, and set up the workflow of the application.
 
 **Student Name and NetId:**

@@ -19,13 +19,13 @@ Thus, our project is a personality test that allows a user to answer questions a
 
 ## Constraints
 
-constraints from the deployment environment
+This application must be deployed on an application that uses Kinect. Navigation through this application relies on Kinect skeletal recognition.
 
 ## Collaboration Record
 
 **Student Name and NetId:** Sarah Wang, slw75
 
-**Contribution:** I made the draft of personality test questions and created the function to come up with the final personality type. I also created the different types of personalities based on MBTI, and created the names, colors, descriptions, and compatible types. I worked on UI for the test, including building out the framework and screens for the test questions, as well as creating and designing the final personality quiz screen that features a description of the test and the compatible types. I worked on styling for all of the UI screens, and set up the workflow of the application.
+**Contribution:** I made the draft of personality test questions and created the function to come up with the final personality type. I also created the different types of personalities based on MBTI, and created the names, colors, descriptions, and compatible types. I worked on UI for the test, including building out the framework and screens for the test questions, as well as creating and designing the final personality quiz screen that features a description of the test and the compatible types. I worked on styling for all of the UI screens, and set up the workflow of the application. I also connected the front end to the Kinect commands and tested out all of the functions (such as resetting, undo/redo, and basic navigation).
 
 **Student Name and NetId:**
 **Contribution:**

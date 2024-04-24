@@ -2,11 +2,11 @@
 
 ## Instructions
 
-- [todo] explains how to install any dependencies and run the project
+There are no dependencies needed for this project. To run, upload the project to a TV.
 
 ## Description
 
-In a closely knit community like Yale, students are on an individual exploration of identity and seeking to learn more about themselves. For example, students might want to learn what their strongest traits are, or are seeking clarity on how they see themselves.
+In a closely knit community like Yale, students are on an individual exploration of identity and seeking to learn more about themselves, in order to make friends who are better aligned with their personality.
 
 Students also want to find what kinds of people they are compatible with. Compatibility might mean people that you might be good friends with, who in terms of personalities and values are the most aligned with you. Friendship is also a big topic of discussion at Yale, so we hoped to come up with a solution in this problem space.
 
@@ -23,8 +23,8 @@ constraints from the deployment environment
 
 ## Collaboration Record
 
-**Student Name and NetId:**
-**Contribution:**
+**Student Name and NetId:** Sarah Wang, slw75
+**Contribution:** I made the draft of personality test questions and created the function to come up with the final personality type. I also created the different types of personalities based on MBTI, and created the names, colors, descriptions, and compatible types. I worked on UI for the test, including building out the framework and screens for the test questions, as well as creating and designing the final personality quiz screen that features a description of the test and the compatible types. I worked on styling for all of the UI screens, and set up the workflow of the application.
 
 **Student Name and NetId:**
 **Contribution:**
